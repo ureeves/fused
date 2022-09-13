@@ -1,3 +1,6 @@
+use std::path::Path;
+use std::{env, fs};
+
 use fused_src::Build;
 
 fn main() {
@@ -19,6 +22,14 @@ fn main() {
     );
     println!("cargo:rustc-link-lib=fuse3");
 
+    let generated_dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("generated");
+
+    if !generated_dir.exists() {
+        fs::create_dir_all(&generated_dir).unwrap();
+    }
+
     let bindings = builder.generate().unwrap();
-    bindings.write_to_file("src/sys.rs").unwrap();
+    bindings
+        .write_to_file(generated_dir.join("sys.rs"))
+        .unwrap();
 }

@@ -15,7 +15,8 @@ impl Build {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Build {
         Build {
-            out_dir: env::var_os("OUT_DIR").map(|s| PathBuf::from(s).join("libfuse")),
+            out_dir: env::var_os("OUT_DIR")
+                .map(|s| PathBuf::from(s).join("libfuse")),
         }
     }
 
