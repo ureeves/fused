@@ -1,0 +1,29 @@
+[package]
+name = "fused-workspace"
+description = "Fused workspace"
+
+repository = "https://github.com/ureeves/fused"
+authors = ["Eduardo Leegwater Simões <eduardols@protonmail.com>"]
+version = "0.1.0"
+
+publish = false
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+exclude = [".github/*", ".gitignore"]
+
+[dependencies]
+fused = { version = "=0.1.0", path = "lib/api" }
+fused-sys = { version = "=0.1.0", path = "lib/sys" }
+fused-src = { version = "=0.1.0", path = "lib/src" }
+
+[workspace]
+members = [
+    "lib/api",
+    "lib/sys",
+    "lib/src"
+]
+
+[[example]]
+name = "hello"
+path = "examples/hello.rs"

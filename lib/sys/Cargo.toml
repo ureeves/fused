@@ -1,0 +1,19 @@
+[package]
+name = "fused-sys"
+description = "FFI bindings to libfuse"
+categories = ["filesystem", "external-ffi-bindings"]
+keywords = ["fuse", "libfuse", "filesystem"]
+
+repository = "https://github.com/ureeves/fused"
+authors = ["Eduardo Leegwater Simões <eduardols@protonmail.com>"]
+version = "0.1.0"
+
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+libc = "0.2"
+
+[build-dependencies]
+fused-src = { path = "../src" }
+bindgen = "0.60"
